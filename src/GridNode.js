@@ -76,7 +76,7 @@ function GetPixelSize(nest_list){
   }else{
     bigger = row
   }
-  return (300/bigger)
+  return ((300-(bigger*2))/bigger)
 }
 
 
@@ -99,7 +99,7 @@ export default function GridNode({ data }) {
   const grid = StringToArray(data.sor)
   const size = GetPixelSize(grid)
   return (
-    <>
+    <div className='DefaultNode'>
     <Handle type="target" position={Position.Top} />
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
       {grid.map((row, rowIndex) => (
@@ -115,6 +115,6 @@ export default function GridNode({ data }) {
       ))}
     </Box>
     <Handle type="source" position={Position.Bottom} />
-    </>
+    </div>
   );
 };

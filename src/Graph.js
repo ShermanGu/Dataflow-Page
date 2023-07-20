@@ -3,10 +3,11 @@ import {ReactFlow, ReactFlowProvider, Controls, Background} from 'reactflow';
 import dagre from 'dagre';
 import StmtNode from './StmtNode';
 import GridNode from './GridNode';
+import ValNode from './ValNode';
 
 const nodeTypes = {
   GridNode: GridNode,
-  // ValNode: ValNode,
+  ValNode: ValNode,
   StmtNode: StmtNode,
 };
 

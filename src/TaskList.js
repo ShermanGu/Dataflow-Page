@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 
-const tasks = ['t3', 't2', 't0']; // Hardcoded list of tasks
+const tasks = ['t3', 't2', 't37']; // Hardcoded list of tasks
 export default function TaskList({onTaskChange}) {
   return (
     <Box className = 'tabs'>
