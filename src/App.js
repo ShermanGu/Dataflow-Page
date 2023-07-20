@@ -3,6 +3,7 @@ import { Grid, List, ListItem } from '@mui/material';
 import Graph from './Graph';
 import TaskList from './TaskList';
 import 'reactflow/dist/style.css';
+import './App.css'
 
 function App() {
   const [data, setData] = useState({ nodes: [], edges: [] });

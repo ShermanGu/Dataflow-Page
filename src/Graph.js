@@ -1,10 +1,11 @@
 import React from 'react';
-import ReactFlow from 'reactflow';
+import {ReactFlow, ReactFlowProvider, Controls, Background} from 'reactflow';
 import dagre from 'dagre';
 import StmtNode from './StmtNode';
+import GridNode from './GridNode';
 
 const nodeTypes = {
-  // GridNode: GridNode,
+  GridNode: GridNode,
   // ValNode: ValNode,
   StmtNode: StmtNode,
 };
@@ -15,7 +16,7 @@ function preprocess({data}) {
   var initialNodes = [],initialEdges = [];
   for(i = 0; i< data.nodes.length; i++) {
     if(data.nodes[i].type == "val" && data.nodes[i].val.charAt(0) == '['){
-      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{label: data.nodes[i].val}, type: 'GridNode'}])    
+      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{sor: data.nodes[i].val}, type: 'GridNode'}])    
     }else if(data.nodes[i].type == "stmt"){
       initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{stmt: data.nodes[i].val}, type:'StmtNode'}])    
     }else{
@@ -70,8 +71,11 @@ export default function Graph(data) {
   const [initialNodes, initialEdges] = preprocess(data);
   const [nodes, edges] = createGraphLayout(initialNodes, initialEdges);
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}/>
+    <div className='graph'>
+      <ReactFlowProvider>
+        <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes} fitView/>
+        <Controls/>
+      </ReactFlowProvider>
     </div>
   );
 };

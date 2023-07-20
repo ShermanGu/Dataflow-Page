@@ -10,15 +10,15 @@ import Divider from '@mui/material/Divider';
 const tasks = ['t3', 't2', 't0']; // Hardcoded list of tasks
 export default function TaskList({onTaskChange}) {
   return (
-    <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+    <Box className = 'tabs'>
         <List>
         {tasks.map(task => (
           <ListItem disablePadding key={task}>
-            <ListItemButton onClick={() => onTaskChange(task)}>
-              <ListItemText primary={task} />
+            <ListItemButton onClick={() => onTaskChange(task)} style={{height:'4vw'}}>
+              <ListItemText primary={task} align ='center'/> 
             </ListItemButton>
           </ListItem>
-        ))};
+        ))}
         </List>
     </Box>
   );

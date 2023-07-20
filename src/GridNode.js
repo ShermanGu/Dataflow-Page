@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Handle, Position } from 'reactflow';
 import { Box } from '@mui/material';
 
 function numberToColor(number) {
@@ -18,6 +19,66 @@ function numberToColor(number) {
   return colors[number % 10];
 };
 
+function transpose(matrix) {
+  return matrix.reduce((prev, next) => next.map((item, i) =>
+    (prev[i] || []).concat(next[i])
+  ), []);
+}
+
+function StringToArray(str){
+  var i,flag;
+  var re = [];
+  var temp = [];
+  flag = 0;
+  for(i = 0;i<str.length;i++){
+    if(str.charAt(i) == '['){
+      flag ++
+    }else if(str.charAt(i) == ']'){
+      flag --
+    }else if(str.charAt(i) == '\n'){
+      re.push(temp)
+      temp = [];
+    }else if(str.charAt(i) == '1' && flag == 2){
+      temp.push(1)
+    }else if(str.charAt(i) == '2' && flag == 2){
+      temp.push(2)
+    }else if(str.charAt(i) == '3' && flag == 2){
+      temp.push(3)
+    }else if(str.charAt(i) == '4' && flag == 2){
+      temp.push(4)
+    }else if(str.charAt(i) == '5' && flag == 2){
+      temp.push(5)
+    }else if(str.charAt(i) == '6' && flag == 2){
+      temp.push(6)
+    }else if(str.charAt(i) == '7' && flag == 2){
+      temp.push(7)
+    }else if(str.charAt(i) == '8' && flag == 2){
+      temp.push(8)
+    }else if(str.charAt(i) == '9' && flag == 2){
+      temp.push(9)
+    }else if(str.charAt(i) == '0' && flag == 2){
+      temp.push(0)
+    }
+    
+  }
+  if(temp.length > 0){
+    re.push(temp)
+  }
+  return transpose(re);
+}
+
+function GetPixelSize(nest_list){
+  var column, row, bigger;
+  column = nest_list[0].length
+  row = nest_list.length
+  if(column >= row){
+    bigger = column
+  }else{
+    bigger = row
+  }
+  return (300/bigger)
+}
+
 
 function ColorBox({ color, size }) {
   return (
@@ -26,15 +87,20 @@ function ColorBox({ color, size }) {
         width: size,
         height: size,
         backgroundColor: color,
-        border: '1px solid black',
+        border: '1px solid white',
         cursor: 'pointer',
       }}
     />
   );
 };
 
-export default function GridNode({ grid, size }) {
+
+export default function GridNode({ data }) {
+  const grid = StringToArray(data.sor)
+  const size = GetPixelSize(grid)
   return (
+    <>
+    <Handle type="target" position={Position.Top} />
     <Box sx={{ display: 'flex', flexGrow: 1 }}>
       {grid.map((row, rowIndex) => (
         <div key={rowIndex}>
@@ -48,5 +114,7 @@ export default function GridNode({ grid, size }) {
         </div>
       ))}
     </Box>
+    <Handle type="source" position={Position.Bottom} />
+    </>
   );
 };
