@@ -6,15 +6,16 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
+import tablist from './tablist.json';
 
-const tasks = ['t3', 't2', 't37']; // Hardcoded list of tasks
+const tasks = tablist; // Hardcoded list of tasks
 export default function TaskList({onTaskChange}) {
   return (
     <Box className = 'tabs'>
         <List>
         {tasks.map(task => (
           <ListItem disablePadding key={task}>
-            <ListItemButton onClick={() => onTaskChange(task)} style={{height:'4vw'}}>
+            <ListItemButton onClick={() => onTaskChange(task)} className='button'>
               <ListItemText primary={task} align ='center'/> 
             </ListItemButton>
           </ListItem>

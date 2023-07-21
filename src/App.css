@@ -61,12 +61,14 @@
 }
 
 .DefaultNode{
-  display:grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
   border-radius: 3px;
   width: 300px;
   height : 300px;
-  font-size: 12px;
+  color: #222;
   border-width: 1px;
   border-style: solid;
   border-color: #1a192b;
@@ -74,9 +76,27 @@
 }
 
 .DefaultNode .Text{
-  font-size: 200%;
+  font-size: 20px;
   position: absolute;
   top: 50%;
   transform: translate(0%, -50%);
   overflow-wrap:break-word;
+}
+
+.DefaultNode .Var_name{
+  line-height: 20px;
+  font-size: 20px;
+}
+
+
+.DefaultNode .graph{
+  display: flex;
+  place-content: center;
+  background-color: inherit;
+  position: absolute;
+  top: 162px;
+  left: 150px;
+  width:298px;
+  height:278px;
+  border:none;
 }

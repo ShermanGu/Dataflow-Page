@@ -68,15 +68,13 @@ function StringToArray(str){
 }
 
 function GetPixelSize(nest_list){
-  var column, row, bigger;
+  var column, row, column_pixel, row_pixel;
   column = nest_list[0].length
   row = nest_list.length
-  if(column >= row){
-    bigger = column
-  }else{
-    bigger = row
-  }
-  return ((300-(bigger*2))/bigger)
+  column_pixel = (298-(row*2))/row
+  row_pixel = (278-(column*2))/column
+
+  return (column_pixel>row_pixel ? row_pixel:column_pixel)
 }
 
 
@@ -98,10 +96,13 @@ function ColorBox({ color, size }) {
 export default function GridNode({ data }) {
   const grid = StringToArray(data.sor)
   const size = GetPixelSize(grid)
+  
   return (
     <div className='DefaultNode'>
     <Handle type="target" position={Position.Top} />
-    <Box sx={{ display: 'flex', flexGrow: 1 }}>
+
+    <div className = 'Var_name'> {data.name}</div>
+    <Box className = 'graph'>
       {grid.map((row, rowIndex) => (
         <div key={rowIndex}>
           {row.map((cell, colIndex) => (
@@ -114,6 +115,7 @@ export default function GridNode({ data }) {
         </div>
       ))}
     </Box>
+
     <Handle type="source" position={Position.Bottom} />
     </div>
   );

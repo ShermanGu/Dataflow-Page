@@ -12,7 +12,7 @@ export default memo(({ data, isConnectable }) => {
         isConnectable={isConnectable}
       />
       <div className='Text'>
-        {data.label}
+        {data.name}: {data.label}
       </div>
       <Handle
         type="source"

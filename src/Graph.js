@@ -16,12 +16,12 @@ function preprocess({data}) {
   var i;
   var initialNodes = [],initialEdges = [];
   for(i = 0; i< data.nodes.length; i++) {
-    if(data.nodes[i].type == "val" && data.nodes[i].val.charAt(0) == '['){
-      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{sor: data.nodes[i].val}, type: 'GridNode'}])    
+    if(data.nodes[i].type == "val" && data.nodes[i].val.charAt(0) == '[' && data.nodes[i].val.charAt(1) == '['){
+      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{sor: data.nodes[i].val, name: data.nodes[i].name}, type: 'GridNode'}])    
     }else if(data.nodes[i].type == "stmt"){
       initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{stmt: data.nodes[i].val}, type:'StmtNode'}])    
     }else{
-      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{label: data.nodes[i].val}, type: 'ValNode'}])    
+      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{label: data.nodes[i].val, name: data.nodes[i].name}, type: 'ValNode'}])    
     }
   }
   
