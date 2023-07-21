@@ -25,7 +25,7 @@ export default function StmtNode({data}) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" onClick={()=> data.fun("t2")}>Learn More</Button>
       </CardActions>
     </Card>
     </Box>

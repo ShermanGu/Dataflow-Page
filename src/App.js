@@ -28,7 +28,7 @@ function App() {
         <TaskList onTaskChange={handleTaskChange} />
       </Grid>
       <Grid item xs={9}>
-        <Graph data={data} />
+        <Graph data={data} handleTaskChange={handleTaskChange}/>
       </Grid>
     </Grid>
 

@@ -11,7 +11,7 @@ const nodeTypes = {
   StmtNode: StmtNode,
 };
 
-function preprocess({data}) {
+function preprocess({data}, handleClick) {
   const position = { x: 0, y: 0};
   var i;
   var initialNodes = [],initialEdges = [];
@@ -19,7 +19,7 @@ function preprocess({data}) {
     if(data.nodes[i].type == "val" && data.nodes[i].val.charAt(0) == '[' && data.nodes[i].val.charAt(1) == '['){
       initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{sor: data.nodes[i].val, name: data.nodes[i].name}, type: 'GridNode'}])    
     }else if(data.nodes[i].type == "stmt"){
-      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{stmt: data.nodes[i].val}, type:'StmtNode'}])    
+      initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{stmt: data.nodes[i].val, fun: handleClick}, type:'StmtNode'}])    
     }else{
       initialNodes = initialNodes.concat([{id: data.nodes[i].id, position:{x:0,y:0}, data:{label: data.nodes[i].val, name: data.nodes[i].name}, type: 'ValNode'}])    
     }
@@ -68,8 +68,14 @@ function createGraphLayout(nodes, edges) {
   return [nodes, edges];
 }
 
-export default function Graph(data) {
-  const [initialNodes, initialEdges] = preprocess(data);
+const handleClick = () => {
+  console.log('Button clicked!');
+  // Add your custom logic here when the button is clicked
+};
+
+
+export default function Graph({data , handleTaskChange}) {
+  const [initialNodes, initialEdges] = preprocess({data}, handleTaskChange);
   const [nodes, edges] = createGraphLayout(initialNodes, initialEdges);
   return (
     <div className='graph'>

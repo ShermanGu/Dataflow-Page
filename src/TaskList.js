@@ -15,7 +15,7 @@ export default function TaskList({onTaskChange}) {
         <List>
         {tasks.map(task => (
           <ListItem disablePadding key={task}>
-            <ListItemButton onClick={() => onTaskChange(task)} className='button'>
+            <ListItemButton onClick={() => onTaskChange(task)}>
               <ListItemText primary={task} align ='center'/> 
             </ListItemButton>
           </ListItem>
