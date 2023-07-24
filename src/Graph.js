@@ -68,10 +68,6 @@ function createGraphLayout(nodes, edges) {
   return [nodes, edges];
 }
 
-const handleClick = () => {
-  console.log('Button clicked!');
-  // Add your custom logic here when the button is clicked
-};
 
 
 export default function Graph({data , handleTaskChange}) {
