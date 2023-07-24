@@ -1,0 +1,1 @@
+{"nodes": [{"id": "997", "type": "val", "name": "left_top_color", "val": "5"}, {"id": "1158", "type": "val", "name": "color", "val": "7"}, {"id": "1174", "type": "stmt", "val": "return np.array([[color]])"}], "edges": [["1158", "1174"]]}

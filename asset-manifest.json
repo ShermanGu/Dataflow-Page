@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dataflow-page/static/css/main.e776aa00.css",
+    "main.js": "/dataflow-page/static/js/main.7e565f70.js",
+    "static/js/787.8a304db3.chunk.js": "/dataflow-page/static/js/787.8a304db3.chunk.js",
+    "index.html": "/dataflow-page/index.html",
+    "main.e776aa00.css.map": "/dataflow-page/static/css/main.e776aa00.css.map",
+    "main.7e565f70.js.map": "/dataflow-page/static/js/main.7e565f70.js.map",
+    "787.8a304db3.chunk.js.map": "/dataflow-page/static/js/787.8a304db3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e776aa00.css",
+    "static/js/main.7e565f70.js"
+  ]
+}
